@@ -3,6 +3,7 @@
 # npm Install Requirements
 
 - [Ubuntu, Debian](#ubuntu-debian)
+  - [Distros Older than 18.04](#distros-older-than-1804)
 - [Fedora, CentOS, RHEL](#fedora-centos-rhel)
 - [Alpine](#alpine)
 - [macOS](#macos)
@@ -29,6 +30,13 @@ sudo apt-get install -y \
   python3
 npm config set python python3
 ```
+
+### Distros Older than 18.04
+
+If you are using a distro older than Ubntu 18.04 and you are using `yarn global add` to install code-server, please make sure to set `npm_config_build_from_source=true`.
+
+This is due to an upstream issue with RHEL7/CentOS 7 comptability with node-argon2
+See details [here](https://github.com/cdr/code-server/pull/3422#pullrequestreview-677765057) and [here](https://github.com/ranisalt/node-argon2/issues/276).
 
 ## Fedora, CentOS, RHEL
 

@@ -286,7 +286,7 @@ export const parse = (
         const split = splitOnFirstEquals(arg.replace(/^--/, ""))
         key = split[0] as keyof Args
         value = split[1]
-
+      }
       if (!key || !options[key]) {
         throw error(`Unknown option ${arg}`)
       }

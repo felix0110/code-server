@@ -21,9 +21,6 @@ RUN apt-get update \
 RUN sudo curl -fsSL https://deb.nodesource.com/setup_15.x | sudo bash -
 RUN sudo apt-get install -y nodejs
 
-# Intall extension
-RUN code-server --install-extension esbenp.prettier-vscode
-
 # https://wiki.debian.org/Locale#Manually
 RUN sed -i "s/# en_US.UTF-8/en_US.UTF-8/" /etc/locale.gen \
   && locale-gen
@@ -42,6 +39,9 @@ RUN ARCH="$(dpkg --print-architecture)" && \
 COPY release-packages/code-server*.deb /tmp/
 COPY ci/release-image/entrypoint.sh /usr/bin/entrypoint.sh
 RUN dpkg -i /tmp/code-server*$(dpkg --print-architecture).deb && rm /tmp/code-server*.deb
+
+# Intall extension
+RUN code-server --install-extension esbenp.prettier-vscode
 
 EXPOSE 8080
 # This way, if someone sets $DOCKER_USER, docker-exec will still work as

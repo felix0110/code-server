@@ -16,6 +16,13 @@ RUN apt-get update \
     vim.tiny \
     lsb-release \
   && rm -rf /var/lib/apt/lists/*
+  
+# Install NodeJS
+RUN sudo curl -fsSL https://deb.nodesource.com/setup_15.x | sudo bash -
+RUN sudo apt-get install -y nodejs
+
+# Intall extension
+RUN code-server --install-extension esbenp.prettier-vscode
 
 # https://wiki.debian.org/Locale#Manually
 RUN sed -i "s/# en_US.UTF-8/en_US.UTF-8/" /etc/locale.gen \
